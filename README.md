@@ -61,6 +61,7 @@ The extractor module performs the following checks before inserting data into th
 - If the database exists, it compares the quantity of records in the database with that of the API.
 - If the quantities are equal, indicating no new data, the module terminates.
 - If the quantities differ, the module inserts the data.
+
 This reduces the extraction time, because it will only trigger the insertion if the quantities are not the same.
 
 
