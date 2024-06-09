@@ -10,10 +10,10 @@ SESSION = create_session()
 logger = Logger(__name__)
 
 
-def query_all():
+def count_all():
     with session_context(session=SESSION) as session:
-        query_data = session.query(Gdp).all()
-    return query_data
+        count = session.query(Gdp.surrogate_id).count()
+    return count
 
 
 def check_pages() -> int:
@@ -84,9 +84,9 @@ def main():
     create_db()
 
     npages, nrecords = check_pages()
-    current_data = query_all()
+    ncurrent = count_all()
 
-    if len(current_data) == nrecords:
+    if ncurrent == nrecords:
         return 
     
     for response_json in request_pages(total=npages):
