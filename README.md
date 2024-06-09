@@ -58,7 +58,7 @@ The app folder contains all the files for the project logic
 
 Before inserting data in the database, the extractor module first checks:
  - If the database doesn't exists, it will create a fresh one with the models and insert all the api data.
- - If exists, it will check if the records quantity in the database and the api
+ - If exists, it will check the records quantity in the database and the api
  - If the quantities are the same, there aren't any new data to insert, so the module will end
  - If the quantities are not the same, the module it insert the data.
 
