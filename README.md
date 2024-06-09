@@ -83,7 +83,7 @@ The app folder contains all the files for the project logic
 - Run the terminal command "docker volume create cloudwalk_volume", this will be the folder that the data will persist.
 
 #### Default Docker
-- Run the terminal command "docker build -t cloudwalk-image" to build the image
+- Run the terminal command "docker build -t cloudwalk-image ." to build the image
 - Run the teminal command "docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name extract1 cloudwalk-image" to start a extraction container'
 - Run the teminal command "docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name query1 cloudwalk-image python -m app.query.query" to start a querier container
 - Check the named volume to interact with the database, output files and logs.
