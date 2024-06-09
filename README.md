@@ -85,21 +85,19 @@ The extractor and query modules function independently, offering the flexibility
 ## Usage
 
 ### Local Python
-- Run the terminal command "python -m app.extractor.extract" to extract the worldbank api data.
-- Run the terminal command "python -m app.query.query" to create a csv file with the Gdp pivot data on ./app/database folder.
+- Run python -m app.extractor.extract to extract World Bank API data.
+- Run python -m app.query.query to create a CSV file with GDP pivot data in the ./app/database folder.
 
 
 ### Docker
 - Navigate to the project directory.
-- Run the terminal command "docker volume create cloudwalk_volume", this will be the folder that the data will persist.
-
+- Run docker volume create cloudwalk_volume to create a persistent data folder.
 #### Default Docker
-- Run the terminal command "docker build -t cloudwalk-image ." to build the image
-- Run the teminal command "docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name extract1 cloudwalk-image" to start a extraction container'
-- Run the teminal command "docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name query1 cloudwalk-image python -m app.query.query" to start a querier container
-- Check the named volume to interact with the database, output files and logs.
-
+- Build the image: docker build -t cloudwalk-image .
+- Start an extraction container: docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name extract1 cloudwalk-image
+- Start a querier container: docker run -v cloudwalk_volume:/usr/src/cloudwalk/app/database --name query1 cloudwalk-image python -m app.query.query
+- Check the named volume for database, output files, and logs.
 #### Docker Compose
-- Run the terminal command "docker-compose build" to create the project image.
-- Run the terminal command "docker-compose up" to start the image on each container.
-- Check the named volume to interact with the database, output files and logs.
+- Build the project image: docker-compose build
+- Start the containers: docker-compose up
+- Check the named volume for database, output files, and logs.
