@@ -1,11 +1,7 @@
 services:
-  base:
-    build: .
-    image: cloudwalk-image
-    command: echo "Base image started"
-
-  extractor:
+  base_extractor:
     container_name: extractor
+    build: .
     image: cloudwalk-image
     command: python -m app.extractor.extract
     volumes:
@@ -18,7 +14,7 @@ services:
     volumes:
       - cloudwalk_volume:/usr/src/cloudwalk/app/database
     depends_on:
-      extractor:
+      base_extractor:
         condition: service_completed_successfully
 
 volumes:
