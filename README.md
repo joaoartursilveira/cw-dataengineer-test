@@ -25,22 +25,16 @@ However this can be changed to execute the querier by modifying the cmd command 
 
 
 ### Installation Steps
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/your_username/repository_name.git
-    ```
-2. Navigate to the project directory:
-    ```sh
-    cd repository_name
-    ```
+- git clone https://github.com/joaoartursilveira/cw-dataengineer-test.git
+- Navigate to the project directory.
+- Run the terminal command "python -m venv venv" to create the python virtual environment.
+- Run the terminal command "venv\Scripts\activate" to connect to the venv.
+- Run the terminal command "pip install -r requirements.txt" to install all dependecies.
+
 
 ## Usage
 
 ### Local Python
-- Navigate to the project directory.
-- Run the terminal command "python -m venv venv" to create the python virtual environment.
-- Run the terminal command "venv\Scripts\activate" to connect to the venv.
-- Run the terminal command "pip install -r app/requirements.txt" to install all dependecies.
 - Run the terminal command "python -m app.extractor.extract" to extract the worldbank api data.
 - Run the terminal command "python -m app.query.query" to create a csv file with the Gdp pivot data on ./app/database folder.
 
