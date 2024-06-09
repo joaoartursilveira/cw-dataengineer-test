@@ -58,16 +58,16 @@ The app folder contains all the files for the project logic
 
 Before inserting data in the database, the extractor module first checks:
  - If the database doesn't exists, it will create a fresh one with the models and insert all the api data.
- - If exists, it will check if the records quantity is the same in the database and the api
+ - If exists, it will check if the records quantity in the database and the api
  - If the quantities are the same, there aren't any new data to insert, so the module will end
  - If the quantities are not the same, the module it insert the data.
 
 This reduces the extraction time, because it will only trigger the insertion if the quantities are not the same.
 
 
-The extractor and query modules function independently, offering the flexibility to obtain output without updating the database, as the query process is faster than database updates. However, note that unlike the extraction module, the query module lacks a database integrity check. To address this, new users are instructed to begin with the extraction module first on the [Usage](#usage) section.
+The extractor and query modules function independently, offering the flexibility to obtain output without updating the database, as the query process is faster than database updates or vice versa. However, note that unlike the extraction module, the query module lacks a database integrity check. To address this, new users are instructed to begin with the extraction module first on the [Usage](#usage) section.
 
-## Installation
+## InstallationW
 
 ### Prerequisites
 - Python (used version: 3.12)
