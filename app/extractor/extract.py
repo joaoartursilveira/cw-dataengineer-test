@@ -5,10 +5,15 @@ from app.alchemy.models import Country, Gdp, create_db
 from app.alchemy.session import create_session, session_context
 from app.extractor.logger import Logger
 
-
 URL = 'https://api.worldbank.org/v2/country/ARG;BOL;BRA;CHL;COL;ECU;GUY;PRY;PER;SUR;URY;VEN/indicator/NY.GDP.MKTP.CD?format=json&page={n}&per_page=1000'
 SESSION = create_session()
 logger = Logger(__name__)
+
+
+def query_all():
+    with session_context(session=SESSION) as session:
+        query_data = session.query(Gdp).all()
+    return query_data
 
 
 def check_pages() -> int:
@@ -22,7 +27,7 @@ def check_pages() -> int:
 
     if response.status_code == 200:
         page_info = response.json()[0]
-        return int(page_info['pages'])
+        return int(page_info['pages']), int(page_info['total'])
 
 
 def request_pages(total: int) -> Generator[dict, None, None]:
@@ -78,8 +83,12 @@ def main():
 
     create_db()
 
-    npages = check_pages()
+    npages, nrecords = check_pages()
+    current_data = query_all()
 
+    if len(current_data) == nrecords:
+        return 
+    
     for response_json in request_pages(total=npages):
 
         for record in response_json:
