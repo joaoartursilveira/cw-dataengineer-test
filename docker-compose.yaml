@@ -2,6 +2,7 @@ services:
   base:
     build: .
     image: cloudwalk-image
+    command: echo "Base image started"
 
   extractor:
     container_name: extractor
