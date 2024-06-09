@@ -56,11 +56,11 @@ The app folder contains all the files for the project logic
 - extractor: worldbank api extraction logic.
 - query: queries the database, pivot it and writes as a csv output located on "database" folder.
 
-Before inserting data in the database, the extractor module first checks:
- - If the database doesn't exists, it will create a fresh one with the models and insert all the api data.
- - If exists, it will check the records quantity in the database and the api.
- - If the quantities are the same, there aren't any new data to insert, ending the module.
- - If the quantities are not the same, the module will insert the data.
+The extractor module performs the following checks before inserting data into the database:
+- It creates a new database with models and inserts all API data if the database does not exist.
+- If the database exists, it compares the quantity of records in the database with that of the API.
+- If the quantities are equal, indicating no new data, the module terminates.
+- If the quantities differ, the module inserts the data.
 
 This reduces the extraction time, because it will only trigger the insertion if the quantities are not the same.
 
