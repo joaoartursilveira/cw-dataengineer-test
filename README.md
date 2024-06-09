@@ -65,7 +65,7 @@ Before inserting data in the database, the extractor module first checks:
 This reduces the extraction time, because it will only trigger the insertion if the quantities are not the same.
 
 
-The extractor and query modules function independently, offering the flexibility to obtain output without updating the database, as the query process is faster than database updates or vice versa. However, note that unlike the extraction module, the query module lacks a database integrity check. To address this, new users are instructed to begin with the extraction module first on the [Usage](#usage) section.
+The extractor and query modules function independently, offering the flexibility to obtain output without updating the database, as the query process is faster than database updates, or vice versa. However, note that unlike the extraction module, the query module lacks a database integrity check. To address this, new users are instructed to begin with the extraction module first on the [Usage](#usage) section.
 
 ## InstallationW
 
