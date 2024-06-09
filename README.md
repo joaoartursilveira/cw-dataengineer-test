@@ -50,18 +50,17 @@ However this can be changed to execute the querier by modifying the cmd command 
 └── requirements.txt
 ```
 
-The app folder contains all the files for the project logic
-- alchemy: sqlalchemy models and session manager.
-- database: store the persistent data like the worldbank.sqlit3, logs and the pivoted query output as csv.
-- extractor: worldbank api extraction logic.
-- query: queries the database, pivot it and writes as a csv output located on "database" folder.
+The app folder contains all project logic files:
+- alchemy: SQLAlchemy models and session manager.
+- database: Stores persistent data such as worldbank.sqlite3, logs, and pivoted query output as CSV.
+- extractor: Logic for World Bank API extraction.
+- query: Queries the database, pivots results, and writes output as CSV in the "database" folder.
 
 The extractor module performs the following checks before inserting data into the database:
 - It creates a new database with models and inserts all API data if the database does not exist.
 - If the database exists, it compares the quantity of records in the database with that of the API.
 - If the quantities are equal, indicating no new data, the module terminates.
 - If the quantities differ, the module inserts the data.
-
 This reduces the extraction time, because it will only trigger the insertion if the quantities are not the same.
 
 
