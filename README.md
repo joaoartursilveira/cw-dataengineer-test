@@ -1,21 +1,60 @@
 # cw data-engineer-test
 
 This project convers two main functionalities:
-    Collects the South-American countries GDP data from the worldbank api and insert them in a database.
-    Queries the GDP database and outputs the pivot data as a csv file.
+- Collects the South-American countries GDP data from the worldbank api, at https://api.worldbank.org/v2/country/ARG;BOL;BRA;CHL;COL;ECU;GUY;PRY;PER;SUR;URY;VEN/indicator/NY.GDP.MKTP.CD?format=json&page=1&per_page=1000, and insert them in a database.
+- Queries the GDP database from year 2019 to 2023 and outputs the pivot data as a csv file.
+
 
 There's a single docker image with the default command to extract the api data.
-However this can be changed to execute the querier by modifying the cmd command on docker run, which is shown later at [Defaut Docker](#default-docker).
+However this can be changed to execute the querier by modifying the cmd command on docker run, which is shown later at [Defaut Docker](#default-docker). The diagram below shows the tables and relations created for the project.
+<p align="left">
+  <img src="db_tables.png" width="400">
+</p>
+
 
 
 ## Table of Contents
-1. [Installation](#installation)
-2. [Usage](#usage)
+1. [Project Structure](#project-strucute)
+2. [Installation](#installation)
+3. [Usage](#usage)
     1. [Local Python](#local-python)
     2. [Docker](#docker)
         1. [Defaut Docker](#default-docker)
         2. [Docker Compose](#docker-compose)
 
+
+## Project Strucute
+```bash
+├── app
+    ├── alchemy
+        ├── models.py
+        └── session.py
+    ├── database
+        ├── log
+            ├── extractor.log
+            └── output.log
+        ├── output.csv
+        └── worldbank.sqlite3
+    ├── extractor
+        ├── extract.py
+        ├── logger.py
+        └── tools.py
+    ├── query
+        ├── logger.py
+        └── query.py
+├── db_tables.png
+├── docker-compose.yml
+├── Dockerfile
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
+
+The app folder contains all the files for the project logic
+- alchemy: sqlalchemy models and session manager.
+- database: store the persistent data like the worldbank.sqlit3, logs and the pivoted query output as csv.
+- extractor: worldbank api extraction logic.
+- query: queries the database, pivot it and writes as a csv output located on "database" folder.
 
 ## Installation
 
