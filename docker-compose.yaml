@@ -1,17 +1,19 @@
 services:
+  base:
+    build: .
+    image: cloudwalk-image
+
   extractor:
     container_name: extractor
-    build:
-      context: .
-      dockerfile: app/extractor/Dockerfile
+    image: cloudwalk-image
+    command: python -m app.extractor.extract
     volumes:
       - cloudwalk_volume:/usr/src/cloudwalk/app/database
 
   querier:
     container_name: querier
-    build:
-      context: .
-      dockerfile: app/query/Dockerfile
+    image: cloudwalk-image
+    command: python -m app.query.query
     volumes:
       - cloudwalk_volume:/usr/src/cloudwalk/app/database
     depends_on:
